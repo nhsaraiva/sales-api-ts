@@ -1,0 +1,18 @@
+Aula sobre o TS, falando sobre as tipagens:
+    - https://www.aluiziodeveloper.com.br/um-pouco-mais-sobre-typescript/
+
+Criando um projeto TS:
+    - https://www.aluiziodeveloper.com.br/criar-aplica%C3%A7%C3%A3o-node-js-com-typescript/
+
+Para gerar o .editorconfig:
+    1- Clique com o botão direito do mouse na raiz do projeto
+    2- Com a extenção do .editorconfig instalada, clique em "generate .editorconfig"
+
+Configurando o eslint:
+    - https://www.aluiziodeveloper.com.br/eslint/
+
+Configurando o prettier:
+    - https://www.aluiziodeveloper.com.br/prettier/
+
+Estrutura do projeto:
+    - https://github.com/aluiziodeveloper/api-vendas/blob/main/project.md
