@@ -19,3 +19,6 @@ Estrutura do projeto:
 
 Passos para instalação do docker:
     - https://www.aluiziodeveloper.com.br/primeiros-passos-com-docker/
+
+Documentação do typeorm para entities:
+    - https://typeorm.io/#/entities
