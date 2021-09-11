@@ -16,3 +16,6 @@ Configurando o prettier:
 
 Estrutura do projeto:
     - https://github.com/aluiziodeveloper/api-vendas/blob/main/project.md
+
+Passos para instalação do docker:
+    - https://www.aluiziodeveloper.com.br/primeiros-passos-com-docker/
