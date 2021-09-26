@@ -1,4 +1,4 @@
-import RedisCache from '@shared/cache/RedisCache';
+import redisCache from '@shared/cache/RedisCache';
 import { getCustomRepository } from 'typeorm';
 import ProductCacheKeys from '../cache/ProductCacheKeys';
 import Product from '../typeorm/entities/Product';
@@ -7,8 +7,6 @@ import { ProductRepository } from '../typeorm/repositories/ProductRepository';
 class ListProductService extends ProductCacheKeys {
     public async execute(): Promise<Product[]> {
         const productRepository = getCustomRepository(ProductRepository);
-
-        const redisCache = new RedisCache();
 
         let products = await redisCache.recover<Product[]>(
             this.getRedisListKey(),

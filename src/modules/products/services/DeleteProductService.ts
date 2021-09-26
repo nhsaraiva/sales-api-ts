@@ -1,4 +1,4 @@
-import RedisCache from '@shared/cache/RedisCache';
+import redisCache from '@shared/cache/RedisCache';
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 import ProductCacheKeys from '../cache/ProductCacheKeys';
@@ -17,8 +17,6 @@ class DeleteProductService extends ProductCacheKeys {
         if (!product) {
             throw new AppError('Product not found');
         }
-
-        const redisCache = new RedisCache();
 
         await redisCache.invalidate(this.getRedisListKey());
 
