@@ -30,6 +30,8 @@ services:
         container_name: apivendas-redis
         environment:
             - ALLOW_EMPTY_PASSWORD=yes
+        ports:
+            - "63799:6379"
 
     pgadmin:
         image: dpage/pgadmin4
@@ -42,3 +44,8 @@ services:
             - "8000:80"
         depends_on:
             - db
+
+    redisinsight:
+        image: 'redislabs/redisinsight:latest'
+        ports:
+            - '8001:8001'

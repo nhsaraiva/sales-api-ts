@@ -1,12 +1,14 @@
+import RedisCache from '@shared/cache/RedisCache';
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
+import ProductCacheKeys from '../cache/ProductCacheKeys';
 import { ProductRepository } from '../typeorm/repositories/ProductRepository';
 
 interface IRequest {
     id: string;
 }
 
-class DeleteProductService {
+class DeleteProductService extends ProductCacheKeys {
     public async execute({ id }: IRequest): Promise<void> {
         const productRepository = getCustomRepository(ProductRepository);
 
@@ -15,6 +17,10 @@ class DeleteProductService {
         if (!product) {
             throw new AppError('Product not found');
         }
+
+        const redisCache = new RedisCache();
+
+        await redisCache.invalidate(this.redisListKey);
 
         await productRepository.remove(product);
     }

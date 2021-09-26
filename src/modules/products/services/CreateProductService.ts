@@ -1,5 +1,7 @@
+import RedisCache from '@shared/cache/RedisCache';
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
+import ProductCacheKeys from '../cache/ProductCacheKeys';
 import Product from '../typeorm/entities/Product';
 import { ProductRepository } from '../typeorm/repositories/ProductRepository';
 
@@ -9,7 +11,7 @@ interface IRequest {
     quantity: number;
 }
 
-class CreateProductService {
+class CreateProductService extends ProductCacheKeys {
     public async execute({
         name,
         price,
@@ -23,11 +25,15 @@ class CreateProductService {
             throw new AppError('There is already one product with this name');
         }
 
+        const redisCache = new RedisCache();
+
         const product = productRepository.create({
             name,
             price,
             quantity,
         });
+
+        await redisCache.invalidate(this.redisListKey);
 
         await productRepository.save(product);
 

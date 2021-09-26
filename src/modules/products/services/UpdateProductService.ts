@@ -1,5 +1,7 @@
+import RedisCache from '@shared/cache/RedisCache';
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
+import ProductCacheKeys from '../cache/ProductCacheKeys';
 import Product from '../typeorm/entities/Product';
 import { ProductRepository } from '../typeorm/repositories/ProductRepository';
 
@@ -10,7 +12,7 @@ interface IRequest {
     quantity: number;
 }
 
-class UpdateProductService {
+class UpdateProductService extends ProductCacheKeys {
     public async execute({
         id,
         name,
@@ -34,6 +36,10 @@ class UpdateProductService {
         product.name = name;
         product.price = price;
         product.quantity = quantity;
+
+        const redisCache = new RedisCache();
+
+        await redisCache.invalidate(this.redisListKey);
 
         await productRepository.save(product);
 
