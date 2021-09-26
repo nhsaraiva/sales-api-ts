@@ -22,3 +22,6 @@ Passos para instalação do docker:
 
 Documentação do typeorm para entities:
     - https://typeorm.io/#/entities
+
+Documentação de relacionamentos do typeorm
+    - https://github.com/typeorm/typeorm/blob/master/docs/relations.md
