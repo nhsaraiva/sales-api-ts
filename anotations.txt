@@ -25,3 +25,7 @@ Documentação do typeorm para entities:
 
 Documentação de relacionamentos do typeorm
     - https://github.com/typeorm/typeorm/blob/master/docs/relations.md
+
+
+TSyringe para fazer injeção de dependência:
+    - https://github.com/microsoft/tsyringe

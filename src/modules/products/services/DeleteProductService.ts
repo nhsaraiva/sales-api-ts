@@ -2,7 +2,7 @@ import redisCache from '@shared/cache/RedisCache';
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 import ProductCacheKeys from '../cache/ProductCacheKeys';
-import { ProductRepository } from '../typeorm/repositories/ProductRepository';
+import { ProductRepository } from '../infra/typeorm/repositories/ProductRepository';
 
 interface IRequest {
     id: string;
