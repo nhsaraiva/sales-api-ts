@@ -33,7 +33,7 @@ class CreateProductService extends ProductCacheKeys {
             quantity,
         });
 
-        await redisCache.invalidate(this.redisListKey);
+        await redisCache.invalidate(this.getRedisListKey());
 
         await productRepository.save(product);
 

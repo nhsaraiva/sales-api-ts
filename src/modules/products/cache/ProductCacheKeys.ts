@@ -1,3 +1,7 @@
 export default class ProductCacheKeys {
-    public redisListKey = 'api-vendas-PRODUCT_LIST';
+    private redisListKey = 'api-vendas-PRODUCT_LIST';
+
+    public getRedisListKey(): string {
+        return this.redisListKey;
+    }
 }

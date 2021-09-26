@@ -39,7 +39,7 @@ class UpdateProductService extends ProductCacheKeys {
 
         const redisCache = new RedisCache();
 
-        await redisCache.invalidate(this.redisListKey);
+        await redisCache.invalidate(this.getRedisListKey());
 
         await productRepository.save(product);
 

@@ -10,12 +10,14 @@ class ListProductService extends ProductCacheKeys {
 
         const redisCache = new RedisCache();
 
-        let products = await redisCache.recover<Product[]>(this.redisListKey);
+        let products = await redisCache.recover<Product[]>(
+            this.getRedisListKey(),
+        );
 
         if (!products) {
             products = await productRepository.find();
 
-            await redisCache.save(this.redisListKey, products);
+            await redisCache.save(this.getRedisListKey(), products);
         }
 
         return products;
