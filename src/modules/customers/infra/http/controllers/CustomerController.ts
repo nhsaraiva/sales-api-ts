@@ -4,7 +4,6 @@ import DeleteCustomerService from '../../../services/DeleteCustomerService';
 import ListCustomerService from '../../../services/ListCustomerService';
 import ShowCustomerService from '../../../services/ShowCustomerService';
 import UpdateCustomerService from '../../../services/UpdateCustomerService';
-import CustomerRepository from '../../typeorm/repositories/CustomerRepository';
 
 import { container } from 'tsyringe';
 
@@ -13,7 +12,7 @@ export default class CustomerController {
         request: Request,
         response: Response,
     ): Promise<Response> {
-        const listCustomerService = new ListCustomerService();
+        const listCustomerService = container.resolve(ListCustomerService);
 
         const customers = await listCustomerService.execute();
 
@@ -23,7 +22,7 @@ export default class CustomerController {
     public async show(request: Request, response: Response): Promise<Response> {
         const { id } = request.params;
 
-        const showCustomerService = new ShowCustomerService();
+        const showCustomerService = container.resolve(ShowCustomerService);
 
         const customer = await showCustomerService.execute({ id });
 
@@ -54,7 +53,7 @@ export default class CustomerController {
 
         const { name, email } = request.body;
 
-        const updateCustomerService = new UpdateCustomerService();
+        const updateCustomerService = container.resolve(UpdateCustomerService);
 
         const customer = await updateCustomerService.execute({
             id,
@@ -71,7 +70,7 @@ export default class CustomerController {
     ): Promise<Response> {
         const { id } = request.params;
 
-        const deleteCustomerService = new DeleteCustomerService();
+        const deleteCustomerService = container.resolve(DeleteCustomerService);
 
         await deleteCustomerService.execute({
             id,

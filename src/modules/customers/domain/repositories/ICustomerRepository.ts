@@ -1,5 +1,6 @@
 import { ICreateCustomer } from '../models/ICreateCustomer';
 import { ICustomer } from '../models/ICustomer';
+import { IPaginationCustomer } from '../models/IPaginationCustomer';
 
 export interface ICustomerRepository {
     findByName(name: string): Promise<ICustomer | undefined>;
@@ -11,4 +12,8 @@ export interface ICustomerRepository {
     create(data: ICreateCustomer): Promise<ICustomer>;
 
     save(customer: ICustomer): Promise<ICustomer>;
+
+    remove(customer: ICustomer): Promise<void>;
+
+    findAllPaginate(): Promise<IPaginationCustomer>;
 }
