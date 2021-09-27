@@ -1,7 +1,7 @@
 import AppError from '@shared/errors/AppError';
-import { ICreateCustomer } from '../domain/models/ICreateCustomer';
-import { ICustomer } from '../domain/models/ICustomer';
-import { ICustomerRepository } from '../domain/repositories/ICustomerRepository';
+import { ICreateCustomer } from '../../domain/models/ICreateCustomer';
+import { ICustomer } from '../../domain/models/ICustomer';
+import { ICustomerRepository } from '../../domain/repositories/ICustomerRepository';
 import { inject, injectable } from 'tsyringe';
 
 @injectable()
