@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
-import CreateUserService from '../../../services/CreateUserService';
 import ListUserService from '../../../services/ListUserService';
 import { classToClass } from 'class-transformer';
+import { container } from 'tsyringe';
+import CreateUserService from '@modules/users/services/CreateUserService/CreateUserService';
 
 export default class UserController {
     public async index(
@@ -21,7 +22,7 @@ export default class UserController {
     ): Promise<Response> {
         const { name, email, password } = request.body;
 
-        const createUserService = new CreateUserService();
+        const createUserService = container.resolve(CreateUserService);
 
         const user = await createUserService.execute({
             name,
